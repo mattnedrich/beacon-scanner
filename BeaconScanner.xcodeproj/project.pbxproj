@@ -93,9 +93,9 @@
 		C95119781E1ADFA90014C3EE = {
 			isa = PBXGroup;
 			children = (
-				C95119831E1ADFA90014C3EE /* CodemashIBeaconDemo */,
-				C95119981E1ADFA90014C3EE /* CodemashIBeaconDemoTests */,
-				C95119A31E1ADFA90014C3EE /* CodemashIBeaconDemoUITests */,
+				C95119831E1ADFA90014C3EE /* BeaconScanner */,
+				C95119981E1ADFA90014C3EE /* BeaconScannerTests */,
+				C95119A31E1ADFA90014C3EE /* BeaconScannerUITests */,
 				C95119821E1ADFA90014C3EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C95119831E1ADFA90014C3EE /* CodemashIBeaconDemo */ = {
+		C95119831E1ADFA90014C3EE /* BeaconScanner */ = {
 			isa = PBXGroup;
 			children = (
 				C958F55B1E1B1076002E6396 /* State */,
@@ -123,25 +123,25 @@
 				C95119901E1ADFA90014C3EE /* Info.plist */,
 				C958F5621E1B3096002E6396 /* Extensions.swift */,
 			);
-			path = CodemashIBeaconDemo;
+			path = BeaconScanner;
 			sourceTree = "<group>";
 		};
-		C95119981E1ADFA90014C3EE /* CodemashIBeaconDemoTests */ = {
+		C95119981E1ADFA90014C3EE /* BeaconScannerTests */ = {
 			isa = PBXGroup;
 			children = (
 				C95119991E1ADFA90014C3EE /* CodemashIBeaconDemoTests.swift */,
 				C951199B1E1ADFA90014C3EE /* Info.plist */,
 			);
-			path = CodemashIBeaconDemoTests;
+			path = BeaconScannerTests;
 			sourceTree = "<group>";
 		};
-		C95119A31E1ADFA90014C3EE /* CodemashIBeaconDemoUITests */ = {
+		C95119A31E1ADFA90014C3EE /* BeaconScannerUITests */ = {
 			isa = PBXGroup;
 			children = (
 				C95119A41E1ADFA90014C3EE /* CodemashIBeaconDemoUITests.swift */,
 				C95119A61E1ADFA90014C3EE /* Info.plist */,
 			);
-			path = CodemashIBeaconDemoUITests;
+			path = BeaconScannerUITests;
 			sourceTree = "<group>";
 		};
 		C958F5591E1B1048002E6396 /* ViewControllers */ = {
@@ -470,7 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 56596UD8Z8;
-				INFOPLIST_FILE = CodemashIBeaconDemo/Info.plist;
+				INFOPLIST_FILE = BeaconScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mattnedrich.beaconscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,7 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 56596UD8Z8;
-				INFOPLIST_FILE = CodemashIBeaconDemo/Info.plist;
+				INFOPLIST_FILE = BeaconScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mattnedrich.beaconscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
