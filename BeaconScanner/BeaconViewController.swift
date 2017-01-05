@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class BeaconViewController: UIViewController, UITableViewDataSource {
+class BeaconViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var beacons: [CLBeaconRegion] = []
     @IBOutlet weak var tableView: UITableView!
@@ -20,7 +20,9 @@ class BeaconViewController: UIViewController, UITableViewDataSource {
         self.beacons = appDelegate.beaconsHolder.beaconInfos.map({ (beaconInfo) -> CLBeaconRegion in
             return beaconInfo.beaconRegion
         })
+        
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,19 +48,27 @@ class BeaconViewController: UIViewController, UITableViewDataSource {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "iBeaconCell")!
         let uuidLabel = cell.viewWithTag(10) as! UILabel
-        uuidLabel.text = beacon.proximityUUID.uuidString
+        uuidLabel.text = "UUID: \(beacon.proximityUUID.uuidString)"
         
         let majorLabel = cell.viewWithTag(20) as! UILabel
         if let majorValue = beacon.major {
-            majorLabel.text = String(describing: majorValue)
+            majorLabel.text = "Major: \(String(describing: majorValue))"
+        } else {
+            majorLabel.text = "Major: none"
         }
     
         let minorLabel = cell.viewWithTag(30) as! UILabel
         if let minorValue = beacon.minor {
-            minorLabel.text = String(describing: minorValue)
+            minorLabel.text = "Minor: \(String(describing: minorValue))"
+        } else {
+            minorLabel.text = "Minor: none"
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 65
     }
 
 }

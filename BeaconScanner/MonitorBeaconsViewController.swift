@@ -40,20 +40,32 @@ class MonitorBeaconsViewController: UIViewController, UITableViewDataSource, UIT
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "MonitorEventTableCell")!
         let uuidLabel = cell.viewWithTag(10) as! UILabel
-        uuidLabel.text = monitorEvent.beacon.proximityUUID.uuidString
+        uuidLabel.text = "UUID: \(monitorEvent.beacon.proximityUUID.uuidString)"
         
         let majorLabel = cell.viewWithTag(20) as! UILabel
         if let majorValue = monitorEvent.beacon.major {
-            majorLabel.text = String(describing: majorValue)
+            majorLabel.text = "Major: \(String(describing: majorValue))"
+        } else {
+            majorLabel.text = "Major: none"
         }
     
         let minorLabel = cell.viewWithTag(30) as! UILabel
         if let minorValue = monitorEvent.beacon.minor {
-            minorLabel.text = String(describing: minorValue)
+            minorLabel.text = "Minor: \(String(describing: minorValue))"
+        } else {
+            minorLabel.text = "Minor: none"
         }
         
         let typeLabel = cell.viewWithTag(40) as! UILabel
         typeLabel.text = monitorEvent.type.rawValue
+        
+        let eventView = cell.viewWithTag(50)!
+        eventView.layer.cornerRadius = 4
+        if monitorEvent.type == MonitorEventType.Enter {
+            eventView.backgroundColor = UIColor(red: (88/255), green: (166/255), blue: (79/255), alpha: 1.0)
+        } else {
+            eventView.backgroundColor = UIColor.red
+        }
         
         return cell
     }

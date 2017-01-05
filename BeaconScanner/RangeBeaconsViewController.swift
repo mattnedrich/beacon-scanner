@@ -42,19 +42,19 @@ class RangeBeaconsViewController: UIViewController, UITableViewDataSource, UITab
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "RangeEventTableCell")!
         let uuidLabel = cell.viewWithTag(10) as! UILabel
-        uuidLabel.text = rangeEvent.beacon.proximityUUID.uuidString
+        uuidLabel.text = "UUID: \(rangeEvent.beacon.proximityUUID.uuidString)"
         
         let majorLabel = cell.viewWithTag(20) as! UILabel
-        majorLabel.text = String(describing: rangeEvent.beacon.major)
+        majorLabel.text = "Major: \(String(describing: rangeEvent.beacon.major))"
     
         let minorLabel = cell.viewWithTag(30) as! UILabel
-        minorLabel.text = String(describing: rangeEvent.beacon.minor)
+        minorLabel.text = "Minor: \(String(describing: rangeEvent.beacon.minor))"
         
         let proximityLabel = cell.viewWithTag(40) as! UILabel
-        proximityLabel.text = rangeEvent.proximity.printString
+        proximityLabel.text = "Proximity: \(rangeEvent.proximity.printString)"
         
         let accuracyLabel = cell.viewWithTag(50) as! UILabel
-        accuracyLabel.text = String(rangeEvent.accuracy)
+        accuracyLabel.text = "Accuracy: \(String(format: "%.2f", rangeEvent.accuracy)) m"
     
         return cell
     }
@@ -63,7 +63,7 @@ class RangeBeaconsViewController: UIViewController, UITableViewDataSource, UITab
         return 65
     }
     
-    @IBAction func configureBeaconsAction(_ sender: Any) {
+    @IBAction func configureBeaconAction(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let beaconTuples = appDelegate.beaconsHolder.beaconInfos.map { (beaconInfo: BeaconInfo) -> (CLBeaconRegion, ToggleBeaconOperation) in
             let toggleOp: () -> () = {beaconInfo.shouldRange = !beaconInfo.shouldRange}

@@ -53,9 +53,18 @@ class ToggleBeaconsViewController: UIViewController, UITableViewDataSource, UITa
         if let minorValue = beacon.minor {
             minorLabel.text = String(describing: minorValue)
         }
-        
+       
         let stateLabel = cell.viewWithTag(40) as! UILabel
-        stateLabel.text = beaconTuple.toggleOperation.currentState() ? "Enabled" : "Disabled"
+        let stateView = cell.viewWithTag(50)!
+        stateView.layer.cornerRadius = 4
+       
+        if beaconTuple.toggleOperation.currentState() {
+            stateView.backgroundColor = UIColor.blue
+            stateLabel.text = "Enabled"
+        } else {
+            stateView.backgroundColor = UIColor(red: (195/255), green: (195/255), blue: (195/255), alpha: 1.0)
+            stateLabel.text = "Disabled"
+        }
         
         return cell
     }
@@ -66,7 +75,7 @@ class ToggleBeaconsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 65
     }
 }
 
