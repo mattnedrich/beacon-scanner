@@ -87,4 +87,3 @@ enum MonitorEventType: String {
     case Enter = "Enter"
     case Exit = "Exit"
 }
-
