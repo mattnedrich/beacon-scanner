@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class RangeEvent {
     let beacon: CLBeacon
