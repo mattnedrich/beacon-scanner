@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91574601E1F07BC00D1B294 /* MonitorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915745F1E1F07BC00D1B294 /* MonitorEvent.swift */; };
 		C95119851E1ADFA90014C3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119841E1ADFA90014C3EE /* AppDelegate.swift */; };
 		C951198C1E1ADFA90014C3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C951198B1E1ADFA90014C3EE /* Assets.xcassets */; };
 		C951198F1E1ADFA90014C3EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C951198D1E1ADFA90014C3EE /* LaunchScreen.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C915745F1E1F07BC00D1B294 /* MonitorEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorEvent.swift; sourceTree = "<group>"; };
 		C95119811E1ADFA90014C3EE /* BeaconScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C95119841E1ADFA90014C3EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C951198B1E1ADFA90014C3EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				C95119B21E1AE1140014C3EE /* BeaconMonitor.swift */,
 				C958F5601E1B2E7A002E6396 /* BeaconRanger.swift */,
+				C915745F1E1F07BC00D1B294 /* MonitorEvent.swift */,
 			);
 			name = BeaconListening;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				C95119B31E1AE1140014C3EE /* BeaconMonitor.swift in Sources */,
 				C958F5651E1B3D91002E6396 /* MonitorBeaconsViewController.swift in Sources */,
 				C958F55D1E1B1625002E6396 /* ToggleBeaconsViewController.swift in Sources */,
+				C91574601E1F07BC00D1B294 /* MonitorEvent.swift in Sources */,
 				C95119851E1ADFA90014C3EE /* AppDelegate.swift in Sources */,
 				C958F55F1E1B18DE002E6396 /* RangeBeaconsViewController.swift in Sources */,
 				C958F5631E1B3096002E6396 /* Extensions.swift in Sources */,

@@ -88,12 +88,3 @@ enum MonitorEventType: String {
     case Exit = "Exit"
 }
 
-class MonitorEvent {
-    let beacon: CLBeaconRegion
-    let type: MonitorEventType
-    
-    init(beacon: CLBeaconRegion, type: MonitorEventType) {
-        self.beacon = beacon
-        self.type = type
-    }
-}
