@@ -71,3 +71,15 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
     }
     
 }
+
+class RangeEvent {
+    let beacon: CLBeacon
+    let proximity: CLProximity
+    let accuracy: CLLocationAccuracy
+    
+    init(beacon: CLBeacon, proximity: CLProximity, accuracy: CLLocationAccuracy) {
+        self.beacon = beacon
+        self.proximity = proximity
+        self.accuracy = accuracy
+    }
+}

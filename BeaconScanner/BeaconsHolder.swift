@@ -42,7 +42,19 @@ class BeaconsHolder: NSObject {
 class BeaconInfo {
     
     let beaconRegion: CLBeaconRegion
-    let shouldMonitor: Bool = false
+    
+    private var _shouldMonitor: Bool = false
+    var shouldMonitor: Bool {
+        get { return self._shouldMonitor }
+        set {
+            self._shouldMonitor = newValue
+            if newValue {
+                self.monitor()
+            } else {
+                self.stopMonitor()
+            }
+        }
+    }
    
     private var _shouldRange: Bool = false
     var shouldRange: Bool {
@@ -73,12 +85,12 @@ class BeaconInfo {
     
     func monitor() {
         let data = ["beacon": self]
-        NotificationCenter.default.post(name: Notification.Name("MonitoringEnabled"), object: nil, userInfo: data)
+        NotificationCenter.default.post(name: Notification.Name("StartMonitoringNotification"), object: nil, userInfo: data)
     }
     
     func stopMonitor() {
         let data = ["beacon": self]
-        NotificationCenter.default.post(name: Notification.Name("MonitoringDisabled"), object: nil, userInfo: data)
+        NotificationCenter.default.post(name: Notification.Name("StopMonitoringNotification"), object: nil, userInfo: data)
     }
 
     func stopAll() {

@@ -9,16 +9,26 @@
 import UIKit
 import CoreLocation
 
+class ToggleBeaconOperation {
+    var toggle: () -> ()
+    var currentState: () -> Bool
+    
+    init(toggle: @escaping () -> (), currentState: @escaping () -> Bool) {
+        self.toggle = toggle
+        self.currentState = currentState
+    }
+}
+
 class ToggleBeaconsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var beaconInfos: [BeaconInfo] = []
+    var beaconInfos: [(beacon: CLBeaconRegion, toggleOperation: ToggleBeaconOperation)] = []
     @IBOutlet weak var tableView: UITableView!
    
     override func viewWillAppear(_ animated: Bool) {
        super.viewWillAppear(animated)
 
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.beaconInfos = appDelegate.beaconsHolder.beaconInfos
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        self.beaconInfos = appDelegate.beaconsHolder.beaconInfos
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -28,8 +38,8 @@ class ToggleBeaconsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let beaconInfo = self.beaconInfos[indexPath.row]
-        let beacon = beaconInfo.beaconRegion
+        let beaconTuple = self.beaconInfos[indexPath.row]
+        let beacon = beaconTuple.beacon
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "toggleTableViewCell")!
         let uuidLabel = cell.viewWithTag(10) as! UILabel
         uuidLabel.text = beacon.proximityUUID.uuidString
@@ -45,14 +55,13 @@ class ToggleBeaconsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         let stateLabel = cell.viewWithTag(40) as! UILabel
-        stateLabel.text = beaconInfo.shouldRange ? "Enabled" : "Disabled"
+        stateLabel.text = beaconTuple.toggleOperation.currentState() ? "Enabled" : "Disabled"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let beaconInfo = self.beaconInfos[indexPath.row]
-        beaconInfo.shouldRange = !beaconInfo.shouldRange
+        self.beaconInfos[indexPath.row].toggleOperation.toggle()
         self.tableView.reloadData()
     }
     
@@ -61,11 +70,3 @@ class ToggleBeaconsViewController: UIViewController, UITableViewDataSource, UITa
     }
 }
 
-class BeaconState {
-    var enabled: Bool = false
-    let beacon: CLBeaconRegion
-    
-    init(beacon: CLBeaconRegion) {
-        self.beacon = beacon
-    }
-}

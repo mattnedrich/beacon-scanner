@@ -18,6 +18,16 @@ class MonitorBeaconsViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(MonitorBeaconsViewController.monitorEvent), name: NSNotification.Name(rawValue: "BeaconMonitoredEvent"), object: nil)
+    }
+   
+    func monitorEvent(notification: NSNotification) {
+        if let monitorEvent = notification.userInfo?["monitorEvent"] as? MonitorEvent {
+            self.monitorEvents.append(monitorEvent)
+            self.tableView.reloadData()
+            let indexPath = IndexPath(row: self.monitorEvents.count-1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,20 +40,20 @@ class MonitorBeaconsViewController: UIViewController, UITableViewDataSource, UIT
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "MonitorEventTableCell")!
         let uuidLabel = cell.viewWithTag(10) as! UILabel
-        uuidLabel.text = monitorEvent.beaconRegion.proximityUUID.uuidString
+        uuidLabel.text = monitorEvent.beacon.proximityUUID.uuidString
         
         let majorLabel = cell.viewWithTag(20) as! UILabel
-        if let majorValue = monitorEvent.beaconRegion.major {
+        if let majorValue = monitorEvent.beacon.major {
             majorLabel.text = String(describing: majorValue)
         }
     
         let minorLabel = cell.viewWithTag(30) as! UILabel
-        if let minorValue = monitorEvent.beaconRegion.minor {
+        if let minorValue = monitorEvent.beacon.minor {
             minorLabel.text = String(describing: minorValue)
         }
         
         let typeLabel = cell.viewWithTag(40) as! UILabel
-        typeLabel.text = monitorEvent.description
+        typeLabel.text = monitorEvent.type.rawValue
         
         return cell
     }
@@ -51,14 +61,19 @@ class MonitorBeaconsViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
-}
-
-class MonitorEvent {
-    let beaconRegion: CLBeaconRegion
-    let description: String
     
-    init(beaconRegion: CLBeaconRegion, description: String) {
-        self.beaconRegion = beaconRegion
-        self.description = description
+    @IBAction func configureBeaconsAction(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let beaconTuples = appDelegate.beaconsHolder.beaconInfos.map { (beaconInfo: BeaconInfo) -> (CLBeaconRegion, ToggleBeaconOperation) in
+            let toggleOp: () -> () = {beaconInfo.shouldMonitor = !beaconInfo.shouldMonitor}
+            let currentStateOp: () -> Bool = {return beaconInfo.shouldMonitor}
+            return (beaconInfo.beaconRegion, ToggleBeaconOperation(toggle: toggleOp, currentState: currentStateOp))
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ToggleBeaconsViewController") as! ToggleBeaconsViewController
+        controller.beaconInfos = beaconTuples
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
+

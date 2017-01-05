@@ -62,16 +62,19 @@ class RangeBeaconsViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
-}
-
-class RangeEvent {
-    let beacon: CLBeacon
-    let proximity: CLProximity
-    let accuracy: CLLocationAccuracy
     
-    init(beacon: CLBeacon, proximity: CLProximity, accuracy: CLLocationAccuracy) {
-        self.beacon = beacon
-        self.proximity = proximity
-        self.accuracy = accuracy
+    @IBAction func configureBeaconsAction(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let beaconTuples = appDelegate.beaconsHolder.beaconInfos.map { (beaconInfo: BeaconInfo) -> (CLBeaconRegion, ToggleBeaconOperation) in
+            let toggleOp: () -> () = {beaconInfo.shouldRange = !beaconInfo.shouldRange}
+            let currentStateOp: () -> Bool = {return beaconInfo.shouldRange}
+            return (beaconInfo.beaconRegion, ToggleBeaconOperation(toggle: toggleOp, currentState: currentStateOp))
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ToggleBeaconsViewController") as! ToggleBeaconsViewController
+        controller.beaconInfos = beaconTuples
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
+

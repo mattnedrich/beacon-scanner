@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sGB-EU-GeF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sGB-EU-GeF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,7 +31,7 @@
         <!--Range Beacons View Controller-->
         <scene sceneID="cwz-Nw-fpr">
             <objects>
-                <viewController id="LEd-od-GTa" customClass="RangeBeaconsViewController" customModule="CodemashIBeaconDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LEd-od-GTa" customClass="RangeBeaconsViewController" customModule="BeaconScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i0k-Sd-UBN"/>
                         <viewControllerLayoutGuide type="bottom" id="4TA-jm-NUY"/>
@@ -44,7 +44,7 @@
                                 <rect key="frame" x="144" y="72" width="86" height="30"/>
                                 <state key="normal" title="Set Beacons"/>
                                 <connections>
-                                    <segue destination="ILG-0G-TVB" kind="show" id="Jn6-Dd-CTa"/>
+                                    <action selector="configureBeaconsAction:" destination="LEd-od-GTa" eventType="touchUpInside" id="L8X-UW-r67"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bue-8M-nCd">
@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fYD-fr-4l2" id="tJg-31-j3n">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7c-5h-O0A">
@@ -141,7 +141,6 @@
         <!--Monitor-->
         <scene sceneID="eXe-Xu-CO8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fX0-zm-lNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="q7f-U6-HLv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Monitor" id="RJX-ps-wKB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXe-xo-aGu">
@@ -152,13 +151,14 @@
                         <segue destination="KxJ-gf-HYu" kind="relationship" relationship="rootViewController" id="W63-Uh-Wep"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fX0-zm-lNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="201" y="1760"/>
         </scene>
-        <!--View Controller-->
+        <!--Monitor Beacons View Controller-->
         <scene sceneID="e9F-Lv-ntK">
             <objects>
-                <viewController id="KxJ-gf-HYu" sceneMemberID="viewController">
+                <viewController id="KxJ-gf-HYu" customClass="MonitorBeaconsViewController" customModule="BeaconScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QeN-IS-mFr"/>
                         <viewControllerLayoutGuide type="bottom" id="5XM-Ad-W7I"/>
@@ -170,6 +170,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kU-BB-g2O">
                                 <rect key="frame" x="144" y="64" width="86" height="30"/>
                                 <state key="normal" title="Set Beacons"/>
+                                <connections>
+                                    <action selector="configureBeaconsAction:" destination="KxJ-gf-HYu" eventType="touchUpInside" id="3it-7Z-ugv"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UHW-fq-PaS">
                                 <rect key="frame" x="0.0" y="95" width="375" height="523"/>
@@ -179,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fID-VR-3nc" id="lQH-ki-gcU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmr-Sj-9cM">
@@ -245,6 +248,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zNn-d4-jM7"/>
+                    <connections>
+                        <outlet property="tableView" destination="UHW-fq-PaS" id="vT6-P4-tyb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5s-3G-dXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -253,7 +259,7 @@
         <!--Toggle Beacons View Controller-->
         <scene sceneID="WIh-rb-CGM">
             <objects>
-                <viewController id="ILG-0G-TVB" customClass="ToggleBeaconsViewController" customModule="CodemashIBeaconDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToggleBeaconsViewController" id="ILG-0G-TVB" customClass="ToggleBeaconsViewController" customModule="BeaconScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bDp-lH-ggA"/>
                         <viewControllerLayoutGuide type="bottom" id="A5e-MY-TD1"/>
@@ -263,14 +269,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GD1-Cw-OYu">
-                                <rect key="frame" x="16" y="72" width="343" height="526"/>
+                                <rect key="frame" x="16" y="28" width="343" height="619"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toggleTableViewCell" rowHeight="75" id="X1j-QY-QDw">
                                         <rect key="frame" x="0.0" y="28" width="343" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X1j-QY-QDw" id="ZHD-Hf-xU9">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="d2O-6p-M9i">
@@ -356,7 +362,7 @@
         <!--iBeacons-->
         <scene sceneID="CTZ-wp-XRU">
             <objects>
-                <viewController id="LPq-U8-wYA" customClass="BeaconViewController" customModule="CodemashIBeaconDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LPq-U8-wYA" customClass="BeaconViewController" customModule="BeaconScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LkD-gG-5dK"/>
                         <viewControllerLayoutGuide type="bottom" id="BEw-1c-cV6"/>
@@ -380,7 +386,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xvm-F4-AJA" id="JK3-m7-eLc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6Q-Lj-nyv">
@@ -445,7 +451,7 @@
         <!--NewI Beacon View Controller-->
         <scene sceneID="Yen-9b-MTA">
             <objects>
-                <viewController storyboardIdentifier="NewIBeaconViewController" id="PBV-O5-EFf" customClass="NewIBeaconViewController" customModule="CodemashIBeaconDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewIBeaconViewController" id="PBV-O5-EFf" customClass="NewIBeaconViewController" customModule="BeaconScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mga-FD-540"/>
                         <viewControllerLayoutGuide type="bottom" id="tP5-qJ-Gf9"/>
