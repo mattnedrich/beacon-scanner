@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import CodemashIBeaconDemo
+@testable import BeaconScanner
 
-class CodemashIBeaconDemoTests: XCTestCase {
+class BeaconScannerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

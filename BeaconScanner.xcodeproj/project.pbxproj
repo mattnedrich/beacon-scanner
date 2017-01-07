@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		C91574601E1F07BC00D1B294 /* MonitorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915745F1E1F07BC00D1B294 /* MonitorEvent.swift */; };
 		C91574621E1F0B7200D1B294 /* RangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91574611E1F0B7200D1B294 /* RangeEvent.swift */; };
+		C91574631E21744300D1B294 /* BeaconScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119A41E1ADFA90014C3EE /* BeaconScannerUITests.swift */; };
 		C95119851E1ADFA90014C3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119841E1ADFA90014C3EE /* AppDelegate.swift */; };
 		C951198C1E1ADFA90014C3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C951198B1E1ADFA90014C3EE /* Assets.xcassets */; };
 		C951198F1E1ADFA90014C3EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C951198D1E1ADFA90014C3EE /* LaunchScreen.storyboard */; };
-		C951199A1E1ADFA90014C3EE /* CodemashIBeaconDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119991E1ADFA90014C3EE /* CodemashIBeaconDemoTests.swift */; };
-		C95119A51E1ADFA90014C3EE /* CodemashIBeaconDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119A41E1ADFA90014C3EE /* CodemashIBeaconDemoUITests.swift */; };
+		C951199A1E1ADFA90014C3EE /* BeaconScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119991E1ADFA90014C3EE /* BeaconScannerTests.swift */; };
 		C95119B31E1AE1140014C3EE /* BeaconMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95119B21E1AE1140014C3EE /* BeaconMonitor.swift */; };
 		C958F5511E1AF436002E6396 /* NewIBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F5501E1AF436002E6396 /* NewIBeaconViewController.swift */; };
 		C958F5531E1AFA97002E6396 /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F5521E1AFA97002E6396 /* BeaconViewController.swift */; };
@@ -52,10 +52,10 @@
 		C951198E1E1ADFA90014C3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C95119901E1ADFA90014C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C95119951E1ADFA90014C3EE /* BeaconScannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaconScannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C95119991E1ADFA90014C3EE /* CodemashIBeaconDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodemashIBeaconDemoTests.swift; sourceTree = "<group>"; };
+		C95119991E1ADFA90014C3EE /* BeaconScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconScannerTests.swift; sourceTree = "<group>"; };
 		C951199B1E1ADFA90014C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C95119A01E1ADFA90014C3EE /* BeaconScannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaconScannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C95119A41E1ADFA90014C3EE /* CodemashIBeaconDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodemashIBeaconDemoUITests.swift; sourceTree = "<group>"; };
+		C95119A41E1ADFA90014C3EE /* BeaconScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconScannerUITests.swift; sourceTree = "<group>"; };
 		C95119A61E1ADFA90014C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C95119B21E1AE1140014C3EE /* BeaconMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconMonitor.swift; sourceTree = "<group>"; };
 		C958F5501E1AF436002E6396 /* NewIBeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewIBeaconViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		C95119981E1ADFA90014C3EE /* BeaconScannerTests */ = {
 			isa = PBXGroup;
 			children = (
-				C95119991E1ADFA90014C3EE /* CodemashIBeaconDemoTests.swift */,
+				C95119991E1ADFA90014C3EE /* BeaconScannerTests.swift */,
 				C951199B1E1ADFA90014C3EE /* Info.plist */,
 			);
 			path = BeaconScannerTests;
@@ -142,7 +142,7 @@
 		C95119A31E1ADFA90014C3EE /* BeaconScannerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C95119A41E1ADFA90014C3EE /* CodemashIBeaconDemoUITests.swift */,
+				C95119A41E1ADFA90014C3EE /* BeaconScannerUITests.swift */,
 				C95119A61E1ADFA90014C3EE /* Info.plist */,
 			);
 			path = BeaconScannerUITests;
@@ -335,7 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C951199A1E1ADFA90014C3EE /* CodemashIBeaconDemoTests.swift in Sources */,
+				C951199A1E1ADFA90014C3EE /* BeaconScannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95119A51E1ADFA90014C3EE /* CodemashIBeaconDemoUITests.swift in Sources */,
+				C91574631E21744300D1B294 /* BeaconScannerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +505,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 56596UD8Z8;
-				INFOPLIST_FILE = CodemashIBeaconDemoTests/Info.plist;
+				INFOPLIST_FILE = BeaconScannerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = None.CodemashIBeaconDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -520,7 +520,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 56596UD8Z8;
-				INFOPLIST_FILE = CodemashIBeaconDemoTests/Info.plist;
+				INFOPLIST_FILE = BeaconScannerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = None.CodemashIBeaconDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -534,7 +534,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 56596UD8Z8;
-				INFOPLIST_FILE = CodemashIBeaconDemoUITests/Info.plist;
+				INFOPLIST_FILE = BeaconScannerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = None.CodemashIBeaconDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -548,7 +548,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 56596UD8Z8;
-				INFOPLIST_FILE = CodemashIBeaconDemoUITests/Info.plist;
+				INFOPLIST_FILE = BeaconScannerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = None.CodemashIBeaconDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
