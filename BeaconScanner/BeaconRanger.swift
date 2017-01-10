@@ -15,8 +15,10 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
     
     override init() {
         self.locationManager = CLLocationManager()
-        self.locationManager.requestWhenInUseAuthorization()
         super.init()
+
+        self.locationManager.requestAlwaysAuthorization()
+//        self.locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconRanger.startRangingNotification), name: NSNotification.Name(rawValue: "StartRangingNotification"), object: nil)

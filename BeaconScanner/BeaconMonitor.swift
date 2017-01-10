@@ -18,7 +18,6 @@ class BeaconMonitor: NSObject, CLLocationManagerDelegate {
         self.locationManager = CLLocationManager()
         super.init()
 
-        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestAlwaysAuthorization()
         locationManager.delegate = self
 
