@@ -23,6 +23,11 @@ class BeaconMonitor: NSObject, CLLocationManagerDelegate {
 
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconMonitor.startMonitoringNotification), name: NSNotification.Name(rawValue: "StartMonitoringNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconMonitor.stopMonitoringNotification), name: NSNotification.Name(rawValue: "StopMonitoringNotification"), object: nil)
+        
+        let foo = self.locationManager.monitoredRegions
+        for f in foo {
+            self.locationManager.stopMonitoring(for: f)
+        }
     }
    
     func startMonitoringNotification(notification: NSNotification) {
@@ -38,37 +43,34 @@ class BeaconMonitor: NSObject, CLLocationManagerDelegate {
     }
     
     func startMonitoringBeacon(beaconRegion: CLBeaconRegion) {
-        beaconRegion.notifyOnEntry = true
-        beaconRegion.notifyOnExit = true
-        beaconRegion.notifyEntryStateOnDisplay = true
-        print("Will start monitoring \(beaconRegion.printString)")
         self.beaconsToMonitor.append(beaconRegion)
         self.locationManager.startMonitoring(for: beaconRegion)
+        print("Will start monitoring \(beaconRegion.printString)")
     }
     
     func stopMonitoringBeacon(beaconRegion: CLBeaconRegion) {
-        print("Will stop monitoring \(beaconRegion.printString)")
         if let index = self.beaconsToMonitor.index(of: beaconRegion) {
             self.beaconsToMonitor.remove(at: index)
             self.locationManager.stopMonitoring(for: beaconRegion)
         }
+        print("Will stop monitoring \(beaconRegion.printString)")
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if let beaconRegion = region as? CLBeaconRegion {
-            print("Enter: \(beaconRegion.printString)")
             let monitorEvent = MonitorEvent(beacon: beaconRegion, type: MonitorEventType.Enter)
             let data = ["monitorEvent": monitorEvent]
             NotificationCenter.default.post(name: Notification.Name("BeaconMonitoredEvent"), object: nil, userInfo: data)
+            print("Enter: \(beaconRegion.printString)")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if let beaconRegion = region as? CLBeaconRegion {
-            print("Exit: \(beaconRegion.printString)")
             let monitorEvent = MonitorEvent(beacon: beaconRegion, type: MonitorEventType.Exit)
             let data = ["monitorEvent": monitorEvent]
             NotificationCenter.default.post(name: Notification.Name("BeaconMonitoredEvent"), object: nil, userInfo: data)
+            print("Exit: \(beaconRegion.printString)")
         }
     }
     

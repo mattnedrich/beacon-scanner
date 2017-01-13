@@ -18,7 +18,6 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
         super.init()
 
         self.locationManager.requestAlwaysAuthorization()
-//        self.locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconRanger.startRangingNotification), name: NSNotification.Name(rawValue: "StartRangingNotification"), object: nil)
@@ -60,11 +59,11 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
             case CLProximity.near:       beaconProximity = "Near";
             case CLProximity.immediate:  beaconProximity = "Immediate";
             }
-            print("BEACON RANGED: uuid: \(beacon.proximityUUID.uuidString) major: \(beacon.major)  minor: \(beacon.minor) proximity: \(beaconProximity)")
-           
+            
             let rangeEvent = RangeEvent(beacon: beacon, proximity: beacon.proximity, accuracy: beacon.accuracy)
             let data = ["rangeEvent": rangeEvent]
             NotificationCenter.default.post(name: Notification.Name("BeaconRangedEvent"), object: nil, userInfo: data)
+            print("BEACON RANGED: uuid: \(beacon.proximityUUID.uuidString) major: \(beacon.major)  minor: \(beacon.minor) proximity: \(beaconProximity)")
         }
     }
     

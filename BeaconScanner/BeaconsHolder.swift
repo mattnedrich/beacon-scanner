@@ -32,9 +32,9 @@ class BeaconsHolder: NSObject {
     
     static func getDefaultBeacons() -> [BeaconInfo] {
         return [
-            BeaconInfo(beaconRegion: CLBeaconRegion(proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")! , major: 24780, minor: 5258, identifier: "Estimote")),
-            BeaconInfo(beaconRegion: CLBeaconRegion(proximityUUID: UUID(uuidString: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6")! , major: 0, minor: 1, identifier: "RadNetworks1")),
-            BeaconInfo(beaconRegion: CLBeaconRegion(proximityUUID: UUID(uuidString: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6")! , major: 0, minor: 2, identifier: "RadNetworks2")),
+//            BeaconInfo(beaconRegion: CLBeaconRegion(proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")! , major: 24780, minor: 5258, identifier: "Estimote")),
+//            BeaconInfo(beaconRegion: CLBeaconRegion(proximityUUID: UUID(uuidString: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6")! , major: 0, minor: 1, identifier: "RadNetworks1")),
+//            BeaconInfo(beaconRegion: CLBeaconRegion(proximityUUID: UUID(uuidString: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6")! , major: 0, minor: 2, identifier: "RadNetworks2")),
         ]
     }
 }
