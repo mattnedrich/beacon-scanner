@@ -18,7 +18,7 @@ class BeaconsHolder: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconsHolder.addIBeacon), name: NSNotification.Name(rawValue: "NewIBeacon"), object: nil)
     }
     
-    func addIBeacon(notification: NSNotification) {
+    @objc func addIBeacon(notification: NSNotification) {
         if let beaconRegion = notification.userInfo?["beaconRegion"] as? CLBeaconRegion {
             self.beaconInfos.append(BeaconInfo(beaconRegion: beaconRegion))
             let data = ["beacons": self.beaconInfos]

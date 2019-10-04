@@ -24,13 +24,13 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconRanger.stopRangingNotification), name: NSNotification.Name(rawValue: "StopRangingNotification"), object: nil)
     }
    
-    func startRangingNotification(notification: NSNotification) {
+    @objc func startRangingNotification(notification: NSNotification) {
         if let beaconInfo = notification.userInfo?["beacon"] as? BeaconInfo {
             self.startRangingBeacon(beaconRegion: beaconInfo.beaconRegion)
         }
     }
 
-    func stopRangingNotification(notification: NSNotification) {
+    @objc func stopRangingNotification(notification: NSNotification) {
         if let beaconInfo = notification.userInfo?["beacon"] as? BeaconInfo {
             self.stopRangingBeacon(beaconRegion: beaconInfo.beaconRegion)
         }
@@ -43,7 +43,7 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
     }
     
     func stopRangingBeacon(beaconRegion: CLBeaconRegion) {
-        if let index = self.beaconsToRange.index(of: beaconRegion) {
+        if let index = self.beaconsToRange.firstIndex(of: beaconRegion) {
             self.beaconsToRange.remove(at: index)
             self.locationManager.stopRangingBeacons(in: beaconRegion)
             print("Stopped ranging for \(beaconRegion.printString)")
@@ -58,6 +58,8 @@ class BeaconRanger: NSObject, CLLocationManagerDelegate {
             case CLProximity.far:        beaconProximity = "Far";
             case CLProximity.near:       beaconProximity = "Near";
             case CLProximity.immediate:  beaconProximity = "Immediate";
+            @unknown default:
+                beaconProximity = "Error";
             }
             
             let rangeEvent = RangeEvent(beacon: beacon, proximity: beacon.proximity, accuracy: beacon.accuracy)

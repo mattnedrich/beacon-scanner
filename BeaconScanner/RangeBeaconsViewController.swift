@@ -22,13 +22,13 @@ class RangeBeaconsViewController: UIViewController, UITableViewDataSource, UITab
         NotificationCenter.default.addObserver(self, selector: #selector(RangeBeaconsViewController.rangeEvent), name: NSNotification.Name(rawValue: "BeaconRangedEvent"), object: nil)
     }
    
-    func rangeEvent(notification: NSNotification) {
+    @objc func rangeEvent(notification: NSNotification) {
         if let rangeEvent = notification.userInfo?["rangeEvent"] as? RangeEvent {
             self.rangeEvents.append(rangeEvent)
             self.tableView.reloadData()
             
             let indexPath = IndexPath(row: self.rangeEvents.count-1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
     }
     

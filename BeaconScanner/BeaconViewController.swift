@@ -30,7 +30,7 @@ class BeaconViewController: UIViewController, UITableViewDataSource, UITableView
         NotificationCenter.default.addObserver(self, selector: #selector(BeaconViewController.beaconsUpdated), name: NSNotification.Name(rawValue: "BeaconsUpdated"), object: nil)
     }
     
-    func beaconsUpdated(notification: NSNotification) {
+    @objc func beaconsUpdated(notification: NSNotification) {
         if let beaconInfos = notification.userInfo?["beacons"] as? [BeaconInfo] {
             self.beacons = beaconInfos.map({ (beaconInfo) -> CLBeaconRegion in
                 return beaconInfo.beaconRegion

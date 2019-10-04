@@ -21,12 +21,12 @@ class MonitorBeaconsViewController: UIViewController, UITableViewDataSource, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(MonitorBeaconsViewController.monitorEvent), name: NSNotification.Name(rawValue: "BeaconMonitoredEvent"), object: nil)
     }
    
-    func monitorEvent(notification: NSNotification) {
+    @objc func monitorEvent(notification: NSNotification) {
         if let monitorEvent = notification.userInfo?["monitorEvent"] as? MonitorEvent {
             self.monitorEvents.append(monitorEvent)
             self.tableView.reloadData()
             let indexPath = IndexPath(row: self.monitorEvents.count-1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
     }
     

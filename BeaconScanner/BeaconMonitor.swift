@@ -30,13 +30,13 @@ class BeaconMonitor: NSObject, CLLocationManagerDelegate {
         }
     }
    
-    func startMonitoringNotification(notification: NSNotification) {
+    @objc func startMonitoringNotification(notification: NSNotification) {
         if let beaconInfo = notification.userInfo?["beacon"] as? BeaconInfo {
             self.startMonitoringBeacon(beaconRegion: beaconInfo.beaconRegion)
         }
     }
 
-    func stopMonitoringNotification(notification: NSNotification) {
+    @objc func stopMonitoringNotification(notification: NSNotification) {
         if let beaconInfo = notification.userInfo?["beacon"] as? BeaconInfo {
             self.stopMonitoringBeacon(beaconRegion: beaconInfo.beaconRegion)
         }
@@ -49,7 +49,7 @@ class BeaconMonitor: NSObject, CLLocationManagerDelegate {
     }
     
     func stopMonitoringBeacon(beaconRegion: CLBeaconRegion) {
-        if let index = self.beaconsToMonitor.index(of: beaconRegion) {
+        if let index = self.beaconsToMonitor.firstIndex(of: beaconRegion) {
             self.beaconsToMonitor.remove(at: index)
             self.locationManager.stopMonitoring(for: beaconRegion)
         }

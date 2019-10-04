@@ -11,7 +11,7 @@ import CoreLocation
 
 extension CLBeaconRegion {
     var printString: String {
-        return "UUID: \(self.proximityUUID.uuidString), major: \(self.major), minor: \(self.minor)"
+        return "UUID: \(self.proximityUUID.uuidString), major: \(String(describing: self.major)), minor: \(String(describing: self.minor))"
     }
 }
 
